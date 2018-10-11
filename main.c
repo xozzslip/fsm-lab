@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdbool.h>
 
 
 enum State {
@@ -12,9 +13,10 @@ enum State {
 
 
 int main(int argc, char **argv) {
-    char *text = "abc sabc abcs absc s      sss";
+    char *text = "   abc sabc abcs absc s      s    qs        dsf  lll";
     char current, next;
     int counter = 0;
+    bool s_already_counted = false;
     enum State state = Init;
     while (1) {
         current = *text++;
@@ -34,6 +36,7 @@ int main(int argc, char **argv) {
             case NewWord:
                 if (current == 's'){
                     counter++;
+                    s_already_counted = true;
                 }
                 next = *text;
                 if (next == ' ') {
@@ -48,7 +51,8 @@ int main(int argc, char **argv) {
                 break;
             case EndWord:
                 next = *text;
-                if (current == 's'){
+                
+                if (current == 's' && s_already_counted == false){
                     counter++;
                 }
                 if (next == ' ') {
@@ -60,6 +64,7 @@ int main(int argc, char **argv) {
                 break;
             case WhiteSpace:
                 next = *text;
+                s_already_counted = false;
                 if (next == ' ') {
                     state = WhiteSpace;
                 }
