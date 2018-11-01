@@ -1,0 +1,23 @@
+bitcode_file_list: /home/xozzslip/coding/labs/lab1/bitcodelist
+mutators:
+  - default
+test_framework: CustomTest
+fork: enabled
+dry_run: disabled
+fail_fast: disabled
+
+
+max_distance: 5
+timeout: 10000
+custom_tests:
+  - name: ololo
+    method: main
+    program: test
+    arguments: []
+
+
+
+  
+
+
+
