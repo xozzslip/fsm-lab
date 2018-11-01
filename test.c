@@ -43,12 +43,13 @@ int main() {
         cnt = count(word);
         ans = answers[i];
         if(cnt != ans){
-            printf("ERROR: in word '%s' found %d insted of %d\n", word, cnt, ans);
+            printf("%i\n", i);
             failed++;
         }
     }
     if(failed == 0) {
         printf("OK\n");
+        return 0;
     }
-    return 0;
+    return -1;
 }
